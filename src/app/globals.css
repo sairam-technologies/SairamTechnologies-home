@@ -1,26 +1,131 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --navy: #0b1c33;
+  --navy-2: #122844;
+  --ink: #243044;
+  --muted: #5a6878;
+  --paper: #f3efe8;
+  --paper-2: #e7e1d6;
+  --cream: #faf8f4;
+  --teal: #0e7c73;
+  --teal-2: #12958b;
+  --gold: #c4a574;
+  --line: #d8d1c5;
+  --danger: #b42318;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-navy: var(--navy);
+  --color-navy-2: var(--navy-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-cream: var(--cream);
+  --color-teal: var(--teal);
+  --color-teal-2: var(--teal-2);
+  --color-gold: var(--gold);
+  --color-line: var(--line);
+  --color-danger: var(--danger);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-instrument);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--navy);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--teal) 28%, white);
+  color: var(--navy);
+}
+
+:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 3px;
+}
+
+.font-display {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+}
+
+.grid-fade {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--navy) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--navy) 6%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 20%, transparent 75%);
+}
+
+.grain {
+  position: relative;
+}
+
+.grain::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.04  0 0 0 0 0.08  0 0 0 0 0.12  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+.hairline {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--navy) 18%, transparent),
+    transparent
+  );
+  height: 1px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise {
+  animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.rise-delay-1 {
+  animation-delay: 0.08s;
+}
+.rise-delay-2 {
+  animation-delay: 0.16s;
+}
+.rise-delay-3 {
+  animation-delay: 0.24s;
+}
+.rise-delay-4 {
+  animation-delay: 0.32s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .rise,
+  .rise-delay-1,
+  .rise-delay-2,
+  .rise-delay-3,
+  .rise-delay-4 {
+    animation: none !important;
+  }
 }

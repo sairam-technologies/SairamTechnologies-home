@@ -1,7 +1,8 @@
 {
-  "name": "sairam-home",
-  "version": "0.1.0",
+  "name": "sairam-technologies",
+  "version": "1.0.0",
   "private": true,
+  "description": "Sairam Technologies company website",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,13 +10,16 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "lucide-react": "^1.37.0",
     "next": "16.3.3",
+    "nodemailer": "^9.0.6",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/nodemailer": "^8.0.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
