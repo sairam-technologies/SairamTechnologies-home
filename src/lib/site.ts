@@ -28,7 +28,7 @@ export const products = [
     status: "In production",
     storeNote: "Soon on Google Play",
     href: "/products/family-rx",
-    liveUrl: "https://family-prescription-box.vercel.app",
+    liveUrl: "https://family-rx.sairamtechnologies.in",
     summary:
       "One private place for your family’s prescriptions, reports, documents, and daily health — with AI that reads what you upload.",
     description:
@@ -69,7 +69,7 @@ export const products = [
     status: "In production",
     storeNote: "Soon on Google Play",
     href: "/products/school-bus-notifier",
-    liveUrl: "https://school-bus-location-notifier.vercel.app",
+    liveUrl: "https://school-bus-tracking.sairamtechnologies.in",
     summary:
       "Live bus tracking against your home, with voice alerts as the bus approaches and a distinct chime when it arrives.",
     description:

@@ -4,8 +4,8 @@ Company website for **Sairam Technologies** — a product studio that publishes 
 
 ## Products on the site
 
-- [Family-Rx Health Box](https://family-prescription-box.vercel.app) — family prescriptions, reports, documents, and nutrition
-- [School Bus Notifier](https://school-bus-location-notifier.vercel.app) — live bus tracking and arrival alerts
+- [Family-Rx Health Box](https://family-rx.sairamtechnologies.in) — family prescriptions, reports, documents, and nutrition
+- [School Bus Notifier](https://school-bus-tracking.sairamtechnologies.in) — live bus tracking and arrival alerts
 
 ## Run locally
 

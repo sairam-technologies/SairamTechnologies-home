@@ -129,7 +129,7 @@ export function Header() {
               Talk to us
             </ContactTrigger>
             <a
-              href="https://family-prescription-box.vercel.app"
+              href="https://family-rx.sairamtechnologies.in"
               className="mt-1 inline-flex items-center gap-1 px-3 py-2 text-sm text-muted"
               target="_blank"
               rel="noopener noreferrer"
