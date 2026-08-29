@@ -11,7 +11,6 @@ export function ContactForm({ variant = "page" }: { variant?: "page" | "modal" }
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle",
   );
-  const [usedMailDraft, setUsedMailDraft] = useState(false);
   const [error, setError] = useState("");
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
@@ -32,26 +31,19 @@ export function ContactForm({ variant = "page" }: { variant?: "page" | "modal" }
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      const json = (await res.json()) as { ok?: boolean; fallback?: boolean };
+      const json = (await res.json()) as { ok?: boolean };
 
       if (!res.ok || !json.ok) {
         throw new Error("Could not send");
-      }
-
-      if (json.fallback) {
-        const subject = encodeURIComponent("Sairam Technologies — Request");
-        const body = encodeURIComponent(
-          `${data.request}\n\n— ${data.name}\n${data.email}`,
-        );
-        window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
-        setUsedMailDraft(true);
       }
 
       setStatus("sent");
       form.reset();
     } catch {
       setStatus("error");
-      setError(`Something went wrong. Email us directly at ${site.email}.`);
+      setError(
+        `The request could not be sent. Email us at ${site.email}.`,
+      );
     }
   }
 
@@ -71,18 +63,7 @@ export function ContactForm({ variant = "page" }: { variant?: "page" | "modal" }
           Thank you. We will write back.
         </h2>
         <p className="mt-4 text-sm leading-7 text-ink/75">
-          {usedMailDraft ? (
-            <>
-              If a mail draft opened, send it to complete the note. You can
-              also write us at{" "}
-              <a className="font-medium text-navy underline" href={`mailto:${site.email}`}>
-                {site.email}
-              </a>
-              .
-            </>
-          ) : (
-            <>Your request was sent to {site.email}. We will write back.</>
-          )}
+          Your request was sent to {site.email}.
         </p>
       </div>
     );

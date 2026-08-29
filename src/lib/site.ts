@@ -26,6 +26,7 @@ export const products = [
     fullName: "Family-Rx Health Box",
     category: "Family health",
     status: "In production",
+    storeNote: "Soon on Google Play",
     href: "/products/family-rx",
     liveUrl: "https://family-prescription-box.vercel.app",
     summary:
@@ -66,6 +67,7 @@ export const products = [
     fullName: "School Bus Notifier",
     category: "School safety",
     status: "In production",
+    storeNote: "Soon on Google Play",
     href: "/products/school-bus-notifier",
     liveUrl: "https://school-bus-location-notifier.vercel.app",
     summary:

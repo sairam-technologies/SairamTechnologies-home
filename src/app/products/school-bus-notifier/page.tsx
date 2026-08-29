@@ -3,6 +3,7 @@ import { ArrowUpRight, Check } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
 import { ContactTrigger } from "@/components/ContactModal";
 import { Container } from "@/components/Container";
+import { PlaySoonBadge } from "@/components/PlaySoonBadge";
 import { SchoolBusVisual } from "@/components/ProductVisuals";
 import { products } from "@/lib/site";
 
@@ -26,8 +27,12 @@ export default function SchoolBusNotifierPage() {
               {product.fullName}
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-8 text-ink/80">
-              {product.description}
+              {product.description} Soon available on the Google Play Store
+              for Android.
             </p>
+            <div className="mt-5">
+              <PlaySoonBadge />
+            </div>
             <div className="mt-8 flex flex-wrap gap-3">
               <ButtonLink href={product.liveUrl} size="lg" external>
                 Open the notifier

@@ -1,9 +1,12 @@
 import { NextResponse } from "next/server";
 import {
-  CONTACT_INBOX,
+  isHttpsMailConfigured,
   isSmtpConfigured,
   sendContactEmail,
 } from "@/lib/mail";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 type Payload = {
   name?: string;
@@ -32,46 +35,16 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false }, { status: 400 });
   }
 
-  if (isSmtpConfigured()) {
-    try {
-      await sendContactEmail({ name, email, request: message });
-      return NextResponse.json({ ok: true });
-    } catch (error) {
-      console.error("Contact SMTP send failed", error);
-      return NextResponse.json({ ok: false }, { status: 502 });
-    }
+  if (!isHttpsMailConfigured() && !isSmtpConfigured()) {
+    console.error("Contact send skipped: SMTP or WEB3FORMS_ACCESS_KEY is not set");
+    return NextResponse.json({ ok: false, reason: "not_configured" }, { status: 503 });
   }
 
-  const key = process.env.RESEND_API_KEY;
-  if (key) {
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${key}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from:
-          process.env.CONTACT_FROM_EMAIL ??
-          "Sairam Technologies <onboarding@resend.dev>",
-        to: [CONTACT_INBOX],
-        reply_to: email,
-        subject: `Website request from ${name}`,
-        text: [
-          `Name: ${name}`,
-          `Email: ${email}`,
-          "",
-          `Request:\n${message}`,
-        ].join("\n"),
-      }),
-    });
-
-    if (!res.ok) {
-      return NextResponse.json({ ok: false }, { status: 502 });
-    }
-
+  try {
+    await sendContactEmail({ name, email, request: message });
     return NextResponse.json({ ok: true });
+  } catch (error) {
+    console.error("Contact send failed", error);
+    return NextResponse.json({ ok: false }, { status: 502 });
   }
-
-  return NextResponse.json({ ok: true, fallback: true });
 }

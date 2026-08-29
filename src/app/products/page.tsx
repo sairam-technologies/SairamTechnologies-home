@@ -4,13 +4,14 @@ import { ButtonLink } from "@/components/Button";
 import { ContactTrigger } from "@/components/ContactModal";
 import { Container } from "@/components/Container";
 import { PageHero } from "@/components/PageHero";
+import { PlaySoonBadge } from "@/components/PlaySoonBadge";
 import { FamilyRxVisual, SchoolBusVisual } from "@/components/ProductVisuals";
 import { products } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Products",
   description:
-    "Sairam Technologies products in production: Family-Rx Health Box and School Bus Notifier.",
+    "Sairam Technologies products in production: Family-Rx Health Box and School Bus Notifier. Soon on Google Play.",
 };
 
 export default function ProductsPage() {
@@ -19,7 +20,7 @@ export default function ProductsPage() {
       <PageHero
         eyebrow="Products"
         title="Applications in market, and a studio ready for the next one."
-        description="We publish software people can open today. Family-Rx Health Box and School Bus Notifier are live. Future products will sit here with the same standard."
+        description="We publish software people can open today. Family-Rx Health Box and School Bus Notifier are live on the web, and both are soon going to be available on the Google Play Store for Android."
       />
       <section className="py-16 sm:py-24">
         <Container className="space-y-8">
@@ -45,6 +46,9 @@ export default function ProductsPage() {
                 <p className="mt-4 text-[15px] leading-7 text-ink/75">
                   {product.description}
                 </p>
+                <div className="mt-5">
+                  <PlaySoonBadge />
+                </div>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <ButtonLink href={product.href}>
                     View product

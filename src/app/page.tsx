@@ -3,6 +3,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
 import { ContactTrigger } from "@/components/ContactModal";
 import { Container } from "@/components/Container";
+import { PlaySoonBadge } from "@/components/PlaySoonBadge";
 import { FamilyRxVisual, SchoolBusVisual } from "@/components/ProductVisuals";
 import { principles, products, services, site } from "@/lib/site";
 
@@ -72,8 +73,9 @@ export default function HomePage() {
                 Products people already use.
               </h2>
               <p className="mt-4 text-ink/75 leading-7">
-                Each product is a full application — not a concept. Open them,
-                install them, and see how we build.
+                Each product is a full application — not a concept. Use them on
+                the web today. Both are soon going to be available on the
+                Google Play Store for Android.
               </p>
             </div>
             <ButtonLink href="/products" variant="secondary">
@@ -101,6 +103,9 @@ export default function HomePage() {
                 <p className="mt-4 flex-1 text-[15px] leading-7 text-ink/75">
                   {product.summary}
                 </p>
+                <div className="mt-5">
+                  <PlaySoonBadge />
+                </div>
                 <div className="mt-8 flex flex-wrap items-center gap-4">
                   <Link
                     href={product.href}
