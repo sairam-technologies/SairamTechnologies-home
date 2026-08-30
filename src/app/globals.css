@@ -117,6 +117,90 @@ body {
   animation-delay: 0.32s;
 }
 
+.mesh {
+  background:
+    radial-gradient(ellipse 50% 40% at 15% 20%, rgba(18, 149, 139, 0.28), transparent 55%),
+    radial-gradient(ellipse 45% 50% at 88% 10%, rgba(196, 165, 116, 0.16), transparent 50%),
+    radial-gradient(ellipse 40% 40% at 70% 80%, rgba(20, 184, 166, 0.12), transparent 55%);
+  animation: mesh-shift 18s ease-in-out infinite alternate;
+}
+
+@keyframes mesh-shift {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.08) translate3d(-2%, 2%, 0);
+  }
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float-slow {
+  animation: float-y 7s ease-in-out infinite;
+}
+
+.float-slower {
+  animation: float-y 9s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee {
+  animation: marquee 36s linear infinite;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-lift {
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 50px -28px rgba(11, 28, 51, 0.35);
+}
+
+.tilt-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.18s ease-out;
+  will-change: transform;
+}
+
+.hero-card-shadow {
+  box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.55);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -125,7 +209,22 @@ body {
   .rise-delay-1,
   .rise-delay-2,
   .rise-delay-3,
-  .rise-delay-4 {
+  .rise-delay-4,
+  .mesh,
+  .float-slow,
+  .float-slower,
+  .marquee {
     animation: none !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .card-lift,
+  .card-lift:hover,
+  .tilt-3d {
+    transform: none;
+    transition: none;
   }
 }

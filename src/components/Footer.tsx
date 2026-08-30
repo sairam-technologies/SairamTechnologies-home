@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
 import { Container } from "./Container";
+import { PlaySoonBadge } from "./PlaySoonBadge";
 import { nav, products, site } from "@/lib/site";
 
 export function Footer() {
@@ -12,8 +13,12 @@ export function Footer() {
             <Logo tone="dark" />
             <p className="mt-6 max-w-sm text-[15px] leading-7 text-cream/65">
               A product company building software for family health, school
-              safety, and the services that keep everyday life running.
+              safety, and the services that keep everyday life running. Two apps
+              in market. Android on the way.
             </p>
+            <div className="mt-6">
+              <PlaySoonBadge tone="on-dark" />
+            </div>
           </div>
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 md:col-span-7 md:grid-cols-3">
             <div>

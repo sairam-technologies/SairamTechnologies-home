@@ -153,3 +153,51 @@ export const principles = [
     body: "Typography, performance, and empty states are part of the product. Software that people depend on should feel considered.",
   },
 ] as const;
+
+export const ticker = [
+  "Family-Rx Health Box is live",
+  "School Bus Notifier is live",
+  "Soon on Google Play for Android",
+  "Product engineering and custom software",
+  "Built in India · delivered on the cloud",
+] as const;
+
+export const industries = [
+  {
+    title: "Families",
+    body: "Shared health records, prescriptions, and daily care in one private workspace.",
+  },
+  {
+    title: "Schools",
+    body: "Arrival alerts and live bus tracking so parents meet the gate at the right minute.",
+  },
+  {
+    title: "Clinics",
+    body: "Less paper in the waiting room. Structured medicines and reports families can search.",
+  },
+  {
+    title: "Operators",
+    body: "Custom software for the work that does not fit a generic tool — then we stay to operate it.",
+  },
+] as const;
+
+export const insights = [
+  {
+    kind: "Product",
+    title: "Family-Rx is on its own domain",
+    body: "The family health workspace is live at family-rx.sairamtechnologies.in — prescriptions, reports, and nutrition in one place.",
+    href: "/products/family-rx",
+  },
+  {
+    kind: "Product",
+    title: "School buses, tracked to the gate",
+    body: "School Bus Notifier is live at school-bus-tracking.sairamtechnologies.in, with road-network distance and voice alerts.",
+    href: "/products/school-bus-notifier",
+  },
+  {
+    kind: "Roadmap",
+    title: "Android, next",
+    body: "Both apps are soon going to the Google Play Store so families can install them like any other phone app.",
+    href: "/products",
+  },
+] as const;
