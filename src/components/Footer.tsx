@@ -80,7 +80,7 @@ export function Footer() {
           </p>
           <div className="flex gap-6">
             <Link href="/privacy" className="hover:text-cream/80">
-              Privacy
+              Privacy Policy
             </Link>
             <Link href="/terms" className="hover:text-cream/80">
               Terms
